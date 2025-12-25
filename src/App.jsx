@@ -24,12 +24,11 @@ import {
 } from 'lucide-react';
 
 // Firebase konfiguratsiyasi
-const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG || '{}');
-const app = initializeApp(firebaseConfig);
+const firebaseConfigStr = import.meta.env.VITE_FIREBASE_CONFIG || '{}';
+const firebaseConfig = typeof firebaseConfigStr === 'string' ? JSON.parse(firebaseConfigStr) : firebaseConfigStr;const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const appId = import.meta.env.VITE_APP_ID || 'default-app-id';
-
 const roadmapData = [
   // ...existing code...
 ];
